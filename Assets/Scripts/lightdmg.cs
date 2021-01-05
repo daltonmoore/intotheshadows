@@ -30,7 +30,7 @@ public class lightdmg : MonoBehaviour
     {
         yield return new WaitForSeconds(lightTimer);
         lightOn = !lightOn;
-        light2D.
+       // light2D.
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

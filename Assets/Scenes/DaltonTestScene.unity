@@ -220,7 +220,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0, g: 0.2333138, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.2
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.2
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -658,8 +658,9 @@ GameObject:
   - component: {fileID: 897252590}
   - component: {fileID: 897252589}
   - component: {fileID: 897252591}
-  - component: {fileID: 897252592}
   - component: {fileID: 897252593}
+  - component: {fileID: 897252594}
+  - component: {fileID: 897252592}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -682,6 +683,18 @@ MonoBehaviour:
   inLight: 0
   inHealingLight: 0
   totalHealth: 1000
+  maxJumpHeight: 4
+  minJumpHeight: 1
+  wallJumpClimb: {x: 8, y: 16}
+  wallJumpOff: {x: 16, y: 16}
+  wallLeap: {x: 18, y: 18}
+  wallSlideSpeedMax: 3
+  wallStickTime: 0.25
+  timeToWallUnstick: 0
+  dashTime: 0.2
+  lemonsPrefab: {fileID: 0}
+  chargeTimer: 0
+  controller: {fileID: 0}
 --- !u!4 &897252590
 Transform:
   m_ObjectHideFlags: 0
@@ -747,27 +760,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &897252592
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &897252592
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897252588}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd6a90c97aec5d46896501b8b03811d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 256
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  horizontalRaySpacing: 0
+  verticalRaySpacing: 0
+  collider: {fileID: 0}
+  maxSlopeAngle: 80
+  playerInput: {x: 0, y: 0}
 --- !u!61 &897252593
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -794,6 +808,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &897252594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897252588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50fabd597929bc42b3e35c238961c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &966045610
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +831,7 @@ GameObject:
   - component: {fileID: 966045612}
   - component: {fileID: 966045611}
   - component: {fileID: 966045613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
