@@ -401,13 +401,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Mother of Shadows
-    interactions: 2
+    name: Shadow Child
+    interactions: 0
     sentences:
     - Hello, young Shadow, I am the Mother of Shadows.
     - "It\u2019s not safe out here right now, and I\u2019ve come to guide you to
       a safe place."
     - Follow the path, sweet shadow. (A & D)
+    interactable: 0
 --- !u!114 &864012954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,6 +614,7 @@ MonoBehaviour:
     name: 
     interactions: 0
     sentences: []
+    interactable: 0
   audioSource: {fileID: 1340082706}
   animator: {fileID: 1790124839}
 --- !u!224 &1340082705
@@ -1326,6 +1328,7 @@ MonoBehaviour:
     interactions: 0
     sentences:
     - 
+    interactable: 0
 --- !u!4 &2040928135
 Transform:
   m_ObjectHideFlags: 0
