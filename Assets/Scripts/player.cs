@@ -57,6 +57,11 @@ public class player : MonoBehaviour
 
     [SerializeField] Controller2D controller;
 
+    public float distance = 1f;
+    public LayerMask boxMask;
+
+    public GameObject pushableObj;
+
     void Start()
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
@@ -287,13 +292,46 @@ public class player : MonoBehaviour
         return new Vector3(0, 0, temp);
     }
 
+    public void Grab()
+    {
+        Physics2D.queriesStartInColliders = false;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * xMove, distance, boxMask);
+
+        if (hit.collider != null && hit.collider.gameObject.tag == "pushable")
+        {
+
+
+            pushableObj = hit.collider.gameObject;
+            pushableObj.transform.parent = gameObject.transform;
+            //pushableObj.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
+            //pushableObj.GetComponent<FixedJoint2D>().enabled = true;
+            pushableObj.GetComponent<PullPush>().beingPushed = true;
+        }
+
+    }
+
+    public void Drop()
+    {
+        //pushableObj.GetComponent<FixedJoint2D>().enabled = false;
+        pushableObj.transform.parent = null;
+        pushableObj.GetComponent<PullPush>().beingPushed = false;
+        pushableObj = null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+
+        Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.right * xMove * distance);
+    }
+
     IEnumerator LightDmgCoolDown()
     {
         yield return new WaitForSeconds(lightDmgCoolDown);
         lightDmgCoolDownCoroutine = null;
     }
 
-    IEnumerator LightHealCoolDown ()
+    IEnumerator LightHealCoolDown()
     {
         yield return new WaitForSeconds(lightHealCoolDown);
         lightHealCoolDownCoroutine = null;

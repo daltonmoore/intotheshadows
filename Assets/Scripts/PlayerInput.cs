@@ -30,6 +30,18 @@ public class PlayerInput : MonoBehaviour
 		{
 			_player.Dash();
 		}
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			if(_player.pushableObj != null)
+            {
+				_player.Drop();				
+			}
+            else
+            {
+				_player.Grab();
+			}
+		}
+
 		/*if (Input.GetButtonUp(("Fire1")))
 		{
 			player.Shoot();

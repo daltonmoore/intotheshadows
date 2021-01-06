@@ -33,7 +33,7 @@ public class Controller2D : RaycastController
 
         if (moveAmount.y < 0)
         {
-            //DescendSlope(ref moveAmount);
+            DescendSlope(ref moveAmount);
         }
 
         if (moveAmount.x != 0)
@@ -81,8 +81,9 @@ public class Controller2D : RaycastController
                 {
                     continue;
                 }
+            
 
-                float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
+            float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
 				if (i == 0 && slopeAngle <= maxSlopeAngle)
 				{
