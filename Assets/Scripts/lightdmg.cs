@@ -37,6 +37,7 @@ public class lightdmg : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            Debug.Log("Damage");
             player.inLight = true;
         }
     }

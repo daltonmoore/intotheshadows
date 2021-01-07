@@ -14,6 +14,10 @@ public class DialogueManager : MonoBehaviour
 
     public Animator animator;
 
+    public bool talk;
+
+    
+
     private Queue<string> sentences;
     
     // Start is called before the first frame update
@@ -22,12 +26,18 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
 
         audioSource = GetComponent<AudioSource>();
+
+        talk = false;
+
+        
     }
 
     void Update()
     {
         if (Input.GetKeyUp("e"))
         {
+            Debug.Log("called from update");
+            
             DisplayNextSentence();
         }
     }
@@ -36,6 +46,8 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue (Dialogue dialogue)
     {
         Debug.Log("Starting conversation with " + dialogue.name);
+
+        talk = true;
 
         this.dialogue = dialogue;
 
@@ -130,6 +142,115 @@ public class DialogueManager : MonoBehaviour
                     break;
             }
         }
+        else if (dialogue.name == "Mother of Shadows")
+        {
+            switch (dialogue.interactions)
+            {
+                case 0: //Start
+                    dialogue.sentences = new[]
+                    {
+                        "Hello, young Shadow, I am the Mother of Shadows.",
+                        "It’s not safe out here right now, and I’ve come to guide you to a safe place.",
+                        "Follow the path, sweet shadow. (A & D)"
+                    };
+                    break;
+                case 1: //Jump
+                    dialogue.sentences = new[]
+                    {
+                        "Watch out, little Shadow, you’ll need to jump (Spacebar or W) over this gap."
+                    };
+                    break;
+                case 2: //LightDMG
+                    dialogue.sentences = new[]
+                    {
+                        "Little Shadow, you’ll need to stay away from the light.",
+                        "The light will hurt you if it sees you.",
+                        "Please be careful!"
+                    };
+                    break;
+                case 3: //LightHeal
+                    dialogue.sentences = new[]
+                    {
+                        "This is a shadow light, they can heal your wounds, young Shadow."
+                    };
+                    break;
+                case 4: //Dash
+                    dialogue.sentences = new[]
+                    {
+                        "Sweet Shadow, to overcome this obstacle, you’ll need to jump and dash (Shift) across.",
+                    };
+                    break;
+                case 5: //Interact
+                    dialogue.sentences = new[]
+                    {
+                        "Little Shadow, sometimes it is nice to interact (E) with your fellow shadows.",
+                    };
+                    break;
+
+            }
+        }
+        //else if (dialogue.name == "Mother of Shadows Jump")
+        //{
+        //    switch (dialogue.interactions)
+        //    {
+        //        case 0: //Jump
+        //            dialogue.sentences = new[]
+        //            {
+        //                "Watch out, little Shadow, you’ll need to jump (Spacebar or W) over this gap."
+        //            };
+        //            break;
+        //    }
+        //}
+        //else if (dialogue.name == "Mother of Shadows LightDMG")
+        //{
+        //    switch (dialogue.interactions)
+        //    {
+        //        case 0: //LightDMG
+        //            dialogue.sentences = new[]
+        //            {
+        //                "Little Shadow, you’ll need to stay away from the light.",
+        //                "The light will hurt you if it sees you.",
+        //                "Please be careful!"
+        //            };
+        //            break;
+        //    }
+        //}
+        //else if (dialogue.name == "Mother of Shadows LightHeal")
+        //{
+        //    switch (dialogue.interactions)
+        //    {
+        //        case 0: //LightHeal
+        //            dialogue.sentences = new[]
+        //            {
+        //                "This is a shadow light, they can heal your wounds, young Shadow."
+        //            };
+        //            break;
+        //    }
+        //}
+        //else if (dialogue.name == "Mother of Shadows Dash")
+        //{
+        //    switch (dialogue.interactions)
+        //    {
+        //        case 0: //Dash
+        //            dialogue.sentences = new[]
+        //            {
+        //                "Sweet Shadow, to overcome this obstacle, you’ll need to jump and dash (Shift) across.",
+        //            };
+        //break;
+        //    }
+        //}
+        //else if (dialogue.name == "Mother of Shadows Interact")
+        //{
+        //    switch (dialogue.interactions)
+        //    {
+        //        case 0: //Interact
+        //            dialogue.sentences = new[]
+        //            {
+        //                "Little Shadow, sometimes it is nice to interact (E) with your fellow shadows.",
+        //            };
+        //break;
+        //    }
+        //}
         #endregion
 
         foreach (string sentence in dialogue.sentences)
@@ -143,6 +264,8 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+
+        Debug.Log("Next Sentence");
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -172,6 +295,8 @@ public class DialogueManager : MonoBehaviour
 
         dialogue.interactions++;
         animator.SetBool("IsOpen", false);
+
+        talk = false;
 
         SetInteractable();
     }

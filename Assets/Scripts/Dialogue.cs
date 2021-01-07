@@ -8,6 +8,7 @@ public class Dialogue
 
     public string name;
 
+    //Number equals case # in Dialogue Manager
     public int interactions;
 
     [TextArea(3, 10)]
