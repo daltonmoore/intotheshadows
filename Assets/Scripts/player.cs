@@ -10,12 +10,11 @@ public class player : MonoBehaviour
     public bool inDamageLight, inHealingLight;
     [SerializeField]
     int totalHealth;
+    [SerializeField]
     int health;
     float lightDmgCoolDown = .01f;
     float lightHealCoolDown = .02f;
     Coroutine lightDmgCoolDownCoroutine, lightHealCoolDownCoroutine;
-    Canvas canvas;
-    Slider healthBar;
     SpriteRenderer spriteRenderer;
     Sprite[] sprites;
     string spriteSheet;
@@ -73,11 +72,7 @@ public class player : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        healthBar = canvas.transform.Find("Healthbar").GetComponent<Slider>();
         health = totalHealth;
-        healthBar.maxValue = totalHealth;
-        healthBar.value = healthBar.maxValue;
 
         controller = GetComponent<Controller2D>();
 
@@ -361,7 +356,6 @@ public class player : MonoBehaviour
         if (health > 0)
         {
             health--;
-            healthBar.value = (float)health / totalHealth * totalHealth;
         }
         UpdateSprite();
     }
@@ -371,7 +365,6 @@ public class player : MonoBehaviour
         if (health < totalHealth)
         {
             health++;
-            healthBar.value = (float)health / totalHealth * totalHealth;
         }
         UpdateSprite();
     }
@@ -381,32 +374,32 @@ public class player : MonoBehaviour
         int percentage = (int)((float)health / totalHealth * 100);
         switch (percentage)
         {
-            case 90:
+            case 100:
+                spriteRenderer.sprite = sprites[0];
+                break;
+            case 95:
                 spriteRenderer.sprite = sprites[1];
                 break;
-            case 80:
+            case 85:
                 spriteRenderer.sprite = sprites[2];
                 break;
             case 70:
                 spriteRenderer.sprite = sprites[3];
                 break;
-            case 60:
+            case 50:
                 spriteRenderer.sprite = sprites[4];
                 break;
-            case 50:
+            case 40:
                 spriteRenderer.sprite = sprites[5];
                 break;
-            case 40:
+            case 30:
                 spriteRenderer.sprite = sprites[6];
                 break;
-            case 30:
+            case 20:
                 spriteRenderer.sprite = sprites[7];
                 break;
-            case 20:
-                spriteRenderer.sprite = sprites[8];
-                break;
             case 10:
-                spriteRenderer.sprite = sprites[9];
+                spriteRenderer.sprite = sprites[8];
                 break;
         }
     }

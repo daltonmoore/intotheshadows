@@ -11,7 +11,9 @@ public class lightdmg : MonoBehaviour
     BoxCollider2D boxCollider;
     bool lightOn = true;
     Coroutine lightTimerCoroutine;
-    float lightTimer = 2f;
+
+    [SerializeField]
+    float lightTimer;
 
     private void Start()
     {
@@ -22,7 +24,7 @@ public class lightdmg : MonoBehaviour
 
     private void Update()
     {
-        if (lightTimerCoroutine == null)
+        if (lightTimerCoroutine == null && lightTimer != 0)
         {
             lightTimerCoroutine = StartCoroutine(LightTimer());
         }
