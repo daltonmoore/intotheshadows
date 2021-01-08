@@ -42,7 +42,7 @@ public class player : MonoBehaviour
     public float timeToWallUnstick;
 
     Vector2 directionalInput;
-    bool wallSliding;
+   public bool wallSliding;
     int wallDirX;
 
     bool canDash = true;
@@ -90,10 +90,10 @@ public class player : MonoBehaviour
 
         CalculateVelocity();
         HandleWallSliding();
-        if (Input.GetButton(("Fire1")))
-        {
-            chargeTimer += Time.deltaTime;
-        }
+        //if (Input.GetButton(("Fire1")))
+        //{
+        //    chargeTimer += Time.deltaTime;
+        //}
 
         controller.Move(velocity * Time.deltaTime, directionalInput);
 
@@ -147,16 +147,23 @@ public class player : MonoBehaviour
                 velocity.y = wallLeap.y;
             }
         }
+
         if (controller.collisions.below)
         {
             if (controller.collisions.slidingDownMaxSlope)
             {
                 if (directionalInput.x != -Mathf.Sign(controller.collisions.slopeNormal.x))
-                { // not jumping against max slope
+                {   // not jumping against max slope
                     velocity.y = maxJumpVelocity * controller.collisions.slopeNormal.y;
                     velocity.x = maxJumpVelocity * controller.collisions.slopeNormal.x;
                 }
+
+                else
+                {
+                    velocity.y = maxJumpVelocity;
+                }
             }
+
             else
             {
                 velocity.y = maxJumpVelocity;
@@ -199,6 +206,7 @@ public class player : MonoBehaviour
                 }
 
             }
+
             if (velocity.y < -wallSlideSpeedMax && timeToWallUnstick > 0)
             {
                 velocity.y = -wallSlideSpeedMax;
@@ -262,8 +270,8 @@ public class player : MonoBehaviour
         }
 
         float targetVelocityX = velocityNormal * maxJumpVelocity;
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirbourne);
-        //velocity.x = maxJumpVelocity * velocityNormal;
+         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirbourne);
+       // velocity.x = maxJumpVelocity * velocityNormal;
 
         yield return new WaitForSeconds(dashTime);
 
@@ -292,25 +300,27 @@ public class player : MonoBehaviour
         return new Vector3(0, 0, temp);
     }
 
-    public void Grab()
+    public void Interact()
     {
         Physics2D.queriesStartInColliders = false;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * xMove, distance, boxMask);
 
         if (hit.collider != null && hit.collider.gameObject.tag == "pushable")
         {
-
-
             pushableObj = hit.collider.gameObject;
             pushableObj.transform.parent = gameObject.transform;
             //pushableObj.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
             //pushableObj.GetComponent<FixedJoint2D>().enabled = true;
             pushableObj.GetComponent<PullPush>().beingPushed = true;
         }
+        else if (hit.collider != null && hit.collider.gameObject.tag == "Dialogue")
+        {
+            hit.collider.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+        }
 
     }
 
-    public void Drop()
+    public void EndInteract()
     {
         //pushableObj.GetComponent<FixedJoint2D>().enabled = false;
         pushableObj.transform.parent = null;

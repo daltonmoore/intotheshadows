@@ -16,30 +16,35 @@ public class PlayerInput : MonoBehaviour
 	void Update()
 	{
 		Vector2 directionalInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
 		_player.SetDirectionalInput(directionalInput);
 
 		if (Input.GetButtonDown(("Jump")))
 		{
 			_player.OnJumpInputDown();
 		}
+
 		if (Input.GetButtonUp("Jump"))
 		{
 			_player.OnJumpInputUp();
 		}
+
 		if (Input.GetButtonDown(("Dash")))
 		{
 			_player.Dash();
 		}
+
 		if (Input.GetKeyDown(KeyCode.E))
 		{
 			if(_player.pushableObj != null)
             {
-				_player.Drop();				
+				_player.EndInteract();				
 			}
             else
             {
-				_player.Grab();
+				_player.Interact();
 			}
+
 		}
 
 		/*if (Input.GetButtonUp(("Fire1")))
