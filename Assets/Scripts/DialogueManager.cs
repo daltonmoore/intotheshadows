@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public Dialogue dialogue;
     
-    public AudioSource audioSource;
+    //public AudioSource audioSource;
 
     public Animator animator;
 
@@ -25,7 +25,7 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
 
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
 
         talk = false;
 
@@ -137,7 +137,7 @@ public class DialogueManager : MonoBehaviour
                     dialogue.sentences = new[]
                     {
                         "The Mother of Shadows told me she loves all of her little shadows.",
-                        "Do you think she means it?"
+                        "<i><size=12>Do you think she means it?</size></i>"
                     };
                     break;
             }
@@ -186,7 +186,33 @@ public class DialogueManager : MonoBehaviour
                         "Little Shadow, sometimes it is nice to interact (E) with your fellow shadows.",
                     };
                     break;
+            }
+        }
+        else if (dialogue.name == "Light Worshiper")
+        {
+            switch (dialogue.interactions)
+            {
+                case 0:
+                    dialogue.sentences = new[]
+                    {
+                        "May the Light consume us all!"
+                    };
+                    break;
+                case 1:
+                    dialogue.sentences = new[]
+                    {
+                        "Let the light consume you, shadow.",
+                        "So you can be sent into the light’s rays of grace!"
 
+                    };
+                    break;
+                case 2:
+                    dialogue.sentences = new[]
+                    {
+                        "Me?",
+                        "I must stay here to help the children of the shadows see the light!"
+                    };
+                    break;
             }
         }
         //else if (dialogue.name == "Mother of Shadows Jump")
@@ -282,10 +308,10 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
-            audioSource.Play();
+            //audioSource.Play();
             dialogueText.text += letter;
             yield return null;
-            audioSource.Stop();
+            //audioSource.Stop();
         }
     }
 

@@ -130,11 +130,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 316492180}
-  - component: {fileID: 316492179}
-  - component: {fileID: 316492178}
   - component: {fileID: 316492177}
   - component: {fileID: 316492176}
   - component: {fileID: 316492175}
+  - component: {fileID: 316492178}
   m_Layer: 0
   m_Name: ShadowChild
   m_TagString: NPC
@@ -172,6 +171,7 @@ MonoBehaviour:
     interactions: 0
     sentences: []
     interactable: 1
+  audioSource: {fileID: 0}
 --- !u!65 &316492177
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -183,27 +183,27 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &316492178
-MeshRenderer:
+  m_Size: {x: 2.206746, y: 5.6568413, z: 1}
+  m_Center: {x: 0.014031842, y: -0.58210546, z: 0}
+--- !u!212 &316492178
+SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316492174}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -216,7 +216,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -224,14 +224,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &316492179
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316492174}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: e0b6474c772e85647a71060a02afeb3b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 10, y: 10}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!4 &316492180
 Transform:
   m_ObjectHideFlags: 0
@@ -240,8 +243,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316492174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.41, y: -2.252, z: -2.843838}
-  m_LocalScale: {x: 0.24616504, y: 0.26109263, z: 1}
+  m_LocalPosition: {x: 1.332, y: -2.158, z: -2.843838}
+  m_LocalScale: {x: 0.07410295, y: 0.07168828, z: 0.30102956}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -271,7 +274,7 @@ PrefabInstance:
     - target: {fileID: 6593654960440036144, guid: 516017465f9004748a70911c0126f24f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.1486254
+      value: -2.337
       objectReference: {fileID: 0}
     - target: {fileID: 6593654960440036144, guid: 516017465f9004748a70911c0126f24f,
         type: 3}
@@ -401,12 +404,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &516272148 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 6593654959811202977, guid: 516017465f9004748a70911c0126f24f,
-    type: 3}
-  m_PrefabInstance: {fileID: 338647288}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &722872356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -510,7 +507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &864012952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -544,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Mother of Shadows Start
+    name: Shadow Villager 2
     interactions: 0
     sentences:
     - Hello, young Shadow, I am the Mother of Shadows.
@@ -552,6 +549,7 @@ MonoBehaviour:
       a safe place."
     - Follow the path, sweet shadow. (A & D)
     interactable: 0
+  audioSource: {fileID: 0}
 --- !u!114 &864012954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1017,7 +1015,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 516272148}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1520,11 +1518,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DialogueManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 412484386804229306, guid: dd300d301c07ccd4db56c8b54c1dbcaa,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd300d301c07ccd4db56c8b54c1dbcaa, type: 3}
