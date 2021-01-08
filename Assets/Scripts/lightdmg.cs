@@ -8,7 +8,8 @@ public class lightdmg : MonoBehaviour
 {
     player player;
     Light2D light2D;
-    bool lightOn;
+    BoxCollider2D boxCollider;
+    bool lightOn = true;
     Coroutine lightTimerCoroutine;
     float lightTimer = 2f;
 
@@ -16,6 +17,7 @@ public class lightdmg : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<player>();
         light2D = GetComponent<Light2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -30,15 +32,17 @@ public class lightdmg : MonoBehaviour
     {
         yield return new WaitForSeconds(lightTimer);
         lightOn = !lightOn;
-       // light2D.
+        light2D.enabled = lightOn;
+        lightTimerCoroutine = null;
+        boxCollider.isTrigger = lightOn;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && lightOn)
         {
             Debug.Log("Damage");
-            player.inLight = true;
+            player.inDamageLight = true;
         }
     }
 
@@ -46,7 +50,7 @@ public class lightdmg : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            player.inLight = false;
+            player.inDamageLight = false;
         }
     }
 }
