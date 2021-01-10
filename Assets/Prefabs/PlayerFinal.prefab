@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1047562970042906}
   - component: {fileID: 1047562970042907}
   - component: {fileID: 1047562970042905}
+  - component: {fileID: 3309943237768406980}
   m_Layer: 0
   m_Name: PlayerFinal
   m_TagString: Player
@@ -76,8 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4284843309472344062, guid: d768ac3ce264b2f4795873a01d118243,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b1739358c2367044a0963a8e1285a5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -100,9 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627f9b65d323365458fe98f69c8ee5ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 0}
   inDamageLight: 0
   inHealingLight: 0
   totalHealth: 1000
+  health: 0
   maxJumpHeight: 4
   minJumpHeight: 1
   wallJumpClimb: {x: 8, y: 16}
@@ -111,6 +113,7 @@ MonoBehaviour:
   wallSlideSpeedMax: 3
   wallStickTime: 0.25
   timeToWallUnstick: 0
+  wallSliding: 0
   dashTime: 0.2
   lemonsPrefab: {fileID: 0}
   chargeTimer: 0
@@ -151,7 +154,7 @@ MonoBehaviour:
   verticalRayCount: 4
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
-  collider: {fileID: 0}
+  col2D: {fileID: 0}
   maxSlopeAngle: 80
   playerInput: {x: 0, y: 0}
 --- !u!61 &1047562970042907
@@ -167,18 +170,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00030469894, y: 0.00087970495}
+  m_Offset: {x: 0.0014312267, y: 0.07871318}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.574, y: 0.93100005}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 3.75, y: 6.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5685291, y: 0.9439237}
+  m_Size: {x: 0.28532743, y: 0.59409493}
   m_EdgeRadius: 0
 --- !u!50 &1047562970042905
 Rigidbody2D:
@@ -201,6 +204,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &3309943237768406980
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047562970042886}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31897543738eef042be946ebff60c32c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1047563616310934
 GameObject:
   m_ObjectHideFlags: 0

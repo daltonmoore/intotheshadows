@@ -7,6 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Controller2D))]
 public class player : MonoBehaviour
 {
+    public Transform respawnPoint;
     public bool inDamageLight, inHealingLight;
     [SerializeField]
     int totalHealth;
@@ -15,9 +16,8 @@ public class player : MonoBehaviour
     float lightDmgCoolDown = .01f;
     float lightHealCoolDown = .02f;
     Coroutine lightDmgCoolDownCoroutine, lightHealCoolDownCoroutine;
+    Animator animator;
     SpriteRenderer spriteRenderer;
-    Sprite[] sprites;
-    string spriteSheet;
 
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
@@ -64,15 +64,12 @@ public class player : MonoBehaviour
 
     public GameObject pushableObj;
 
-    private void Awake()
-    {
-        sprites = Resources.LoadAll<Sprite>(@"Art" + System.IO.Path.AltDirectorySeparatorChar + spriteSheet);
-    }
-
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        transform.position = respawnPoint.position;
         health = totalHealth;
+        animator = GetComponent<Animator>();
 
         controller = GetComponent<Controller2D>();
 
@@ -85,6 +82,7 @@ public class player : MonoBehaviour
     void Update()
     {
         move = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0.0f);
+        animator.SetFloat("horizontal", move.x);
 
         if (move != Vector3.zero)
         {
@@ -124,6 +122,11 @@ public class player : MonoBehaviour
             HitByHealLight();
             lightHealCoolDownCoroutine = StartCoroutine(LightHealCoolDown());
         }
+
+        if (transform.position.y < -15)
+        {
+            Respawn();
+        }
     }
 
     public void SetDirectionalInput(Vector2 input)
@@ -150,6 +153,7 @@ public class player : MonoBehaviour
                 velocity.x = -wallDirX * wallLeap.x;
                 velocity.y = wallLeap.y;
             }
+            animator.SetTrigger("jump");
         }
 
         if (controller.collisions.below)
@@ -172,6 +176,7 @@ public class player : MonoBehaviour
             {
                 velocity.y = maxJumpVelocity;
             }
+            animator.SetTrigger("jump");
         }
     }
 
@@ -356,8 +361,12 @@ public class player : MonoBehaviour
         if (health > 0)
         {
             health--;
+            UpdateOpacity();
         }
-        UpdateSprite();
+        else
+        {
+            Respawn();
+        }
     }
 
     public void HitByHealLight()
@@ -365,42 +374,20 @@ public class player : MonoBehaviour
         if (health < totalHealth)
         {
             health++;
+            UpdateOpacity();
         }
-        UpdateSprite();
     }
 
-    void UpdateSprite()
+    void UpdateOpacity()
     {
-        int percentage = (int)((float)health / totalHealth * 100);
-        switch (percentage)
-        {
-            case 100:
-                spriteRenderer.sprite = sprites[0];
-                break;
-            case 95:
-                spriteRenderer.sprite = sprites[1];
-                break;
-            case 85:
-                spriteRenderer.sprite = sprites[2];
-                break;
-            case 70:
-                spriteRenderer.sprite = sprites[3];
-                break;
-            case 50:
-                spriteRenderer.sprite = sprites[4];
-                break;
-            case 40:
-                spriteRenderer.sprite = sprites[5];
-                break;
-            case 30:
-                spriteRenderer.sprite = sprites[6];
-                break;
-            case 20:
-                spriteRenderer.sprite = sprites[7];
-                break;
-            case 10:
-                spriteRenderer.sprite = sprites[8];
-                break;
-        }
+        Color c = spriteRenderer.color;
+        spriteRenderer.color = new Color(c.r, c.g, c.b, 1 * ((float)health / totalHealth));
+    }
+
+    void Respawn()
+    {
+        health = totalHealth;
+        transform.position = respawnPoint.position;
+        UpdateOpacity();
     }
 }

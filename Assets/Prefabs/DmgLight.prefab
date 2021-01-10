@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6275462680444301752}
   - component: {fileID: 6275462680444301753}
-  - component: {fileID: 6275462680444301755}
   - component: {fileID: 6275462680444301766}
+  - component: {fileID: 6339104518868367529}
   m_Layer: 0
   m_Name: DmgLight
   m_TagString: Untagged
@@ -75,32 +75,6 @@ MonoBehaviour:
   - {x: 0.7784997, y: -1.1519058, z: 0}
   - {x: 0.10937643, y: 0.521701, z: 0}
   - {x: -0.7736803, y: -1.0993731, z: 0}
---- !u!61 &6275462680444301755
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6275462680444301767}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.092796326, y: -2.2640882}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.221908, y: 0.9281764}
-  m_EdgeRadius: 0
 --- !u!114 &6275462680444301766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,3 +87,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa22458aeea0d1b45af6a80fbf9e98a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightTimer: 0
+--- !u!60 &6339104518868367529
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6275462680444301767}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.10512018, y: 0.48753738}
+      - {x: -0.7670961, y: -1.1101102}
+      - {x: -1.2053678, y: -2.7011867}
+      - {x: 1.008267, y: -2.7011864}
+      - {x: 0.7539556, y: -1.1363902}

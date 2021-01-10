@@ -8,7 +8,7 @@ public class lightdmg : MonoBehaviour
 {
     player player;
     Light2D light2D;
-    BoxCollider2D boxCollider;
+    PolygonCollider2D polygonCollider;
     bool lightOn = true;
     Coroutine lightTimerCoroutine;
 
@@ -19,7 +19,7 @@ public class lightdmg : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<player>();
         light2D = GetComponent<Light2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        polygonCollider = GetComponent<PolygonCollider2D>();
     }
 
     private void Update()
@@ -36,7 +36,7 @@ public class lightdmg : MonoBehaviour
         lightOn = !lightOn;
         light2D.enabled = lightOn;
         lightTimerCoroutine = null;
-        boxCollider.isTrigger = lightOn;
+        polygonCollider.isTrigger = lightOn;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
