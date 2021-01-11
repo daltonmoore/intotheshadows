@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScottsTestScene.unity
     guid: dbf7a9f2981b00d498471caa5f4ec8a5
+  - enabled: 1
+    path: Assets/Scenes/HUB.unity
+    guid: 964011cc746dfd34fb232d776893468d
   m_configObjects: {}
