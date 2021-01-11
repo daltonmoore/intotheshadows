@@ -7,15 +7,16 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Controller2D))]
 public class player : MonoBehaviour
 {
-    public bool inLight, inHealingLight, inDamageLight;
+    public Transform respawnPoint;
+    public bool inHealingLight, inDamageLight;
     [SerializeField]
     int totalHealth;
     int health;
     float lightDmgCoolDown = .01f;
     float lightHealCoolDown = .02f;
     Coroutine lightDmgCoolDownCoroutine, lightHealCoolDownCoroutine;
-    Canvas canvas;
-    Slider healthBar;
+    Animator animator;
+    SpriteRenderer spriteRenderer;
 
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
@@ -64,11 +65,10 @@ public class player : MonoBehaviour
 
     void Start()
     {
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        healthBar = canvas.transform.Find("Healthbar").GetComponent<Slider>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        transform.position = respawnPoint.position;
+        animator = GetComponent<Animator>();
         health = totalHealth;
-        healthBar.maxValue = totalHealth;
-        healthBar.value = healthBar.maxValue;
 
         controller = GetComponent<Controller2D>();
 
@@ -81,6 +81,7 @@ public class player : MonoBehaviour
     void Update()
     {
         move = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0.0f);
+        animator.SetFloat("horizontal", move.x);
 
         if (move != Vector3.zero)
         {
@@ -109,7 +110,7 @@ public class player : MonoBehaviour
             }
         }
 
-        if (inLight && lightDmgCoolDownCoroutine == null)
+        if (inDamageLight && lightDmgCoolDownCoroutine == null)
         {
             HitByDmgLight();
             lightDmgCoolDownCoroutine = StartCoroutine(LightDmgCoolDown());
@@ -119,6 +120,11 @@ public class player : MonoBehaviour
         {
             HitByHealLight();
             lightHealCoolDownCoroutine = StartCoroutine(LightHealCoolDown());
+        }
+
+        if (transform.position.y < -15)
+        {
+            Respawn();
         }
     }
 
@@ -146,6 +152,7 @@ public class player : MonoBehaviour
                 velocity.x = -wallDirX * wallLeap.x;
                 velocity.y = wallLeap.y;
             }
+            animator.SetTrigger("jump");
         }
 
         if (controller.collisions.below)
@@ -168,6 +175,7 @@ public class player : MonoBehaviour
             {
                 velocity.y = maxJumpVelocity;
             }
+            animator.SetTrigger("jump");
         }
     }
 
@@ -356,7 +364,11 @@ public class player : MonoBehaviour
         if (health > 0)
         {
             health--;
-            healthBar.value = (float)health / totalHealth * totalHealth;
+            UpdateOpacity();
+        }
+        else
+        {
+            Respawn();
         }
     }
 
@@ -365,7 +377,19 @@ public class player : MonoBehaviour
         if (health < totalHealth)
         {
             health++;
-            healthBar.value = (float)health / totalHealth * totalHealth;
+            UpdateOpacity();
         }
+    }
+    void UpdateOpacity()
+    {
+        Color c = spriteRenderer.color;
+        spriteRenderer.color = new Color(c.r, c.g, c.b, 1 * ((float)health / totalHealth));
+    }
+
+    void Respawn()
+    {
+        health = totalHealth;
+        transform.position = respawnPoint.position;
+        UpdateOpacity();
     }
 }
