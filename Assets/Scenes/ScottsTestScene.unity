@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -456,7 +456,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d017593d3e963b4ba48c8eb14087b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  villageScene: DaltonTestScene
+  levelOneScene: ScottsTestScene
+  villageScene: HUB
+  winScene: 
 --- !u!1001 &470373452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7840,7 +7842,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9298,7 +9300,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -37874,9 +37876,8 @@ Tilemap:
   - m_RefCount: 333
     m_Data: {fileID: 11400000, guid: 401a320e4b79e484b850f5039c8f168a, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 6542416894616855748, guid: 982dd43d15f5daf4c85ddbf274c27a34,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 117
     m_Data: {fileID: 7668584652856726714, guid: 982dd43d15f5daf4c85ddbf274c27a34,
       type: 3}
@@ -37895,9 +37896,8 @@ Tilemap:
   - m_RefCount: 114
     m_Data: {fileID: -5438428104812898649, guid: 982dd43d15f5daf4c85ddbf274c27a34,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 7152336452366616611, guid: 982dd43d15f5daf4c85ddbf274c27a34,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 1809452996777878404, guid: 982dd43d15f5daf4c85ddbf274c27a34,
       type: 3}
@@ -37922,10 +37922,12 @@ Tilemap:
   - m_RefCount: 30
     m_Data: {fileID: 2259614025507811926, guid: f9b43c53c01486243a8588269e3b97f1,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 7152336452366616611, guid: 982dd43d15f5daf4c85ddbf274c27a34,
+      type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 6542416894616855748, guid: 982dd43d15f5daf4c85ddbf274c27a34,
+      type: 3}
   - m_RefCount: 353
     m_Data: {fileID: -8410513729070874395, guid: f9b43c53c01486243a8588269e3b97f1,
       type: 3}
