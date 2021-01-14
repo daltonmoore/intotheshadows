@@ -157,7 +157,7 @@ public class DialogueManager : MonoBehaviour
                 case 1: //Jump
                     dialogue.sentences = new[]
                     {
-                        "Watch out, little Shadow, you’ll need to jump (Spacebar or W) over this gap."
+                        "Watch out, little Shadow, you’ll need to jump (Spacebar or W) over this obstacle."
                     };
                     break;
                 case 2: //LightDMG
@@ -177,7 +177,7 @@ public class DialogueManager : MonoBehaviour
                 case 4: //Dash
                     dialogue.sentences = new[]
                     {
-                        "Sweet Shadow, to overcome this obstacle, you’ll need to jump and dash (Shift) across.",
+                        "Sweet Shadow, to overcome this gap, you’ll need to jump and dash (Shift) across.",
                     };
                     break;
                 case 5: //Interact
