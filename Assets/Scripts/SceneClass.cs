@@ -38,8 +38,50 @@ public class SceneClass
     //Go to Third Level
     public void GoToLevel3()
     {
-        Debug.Log("Going to hub");
+        Debug.Log("Going to Level 3");
         //SceneManager.LoadScene("HUB");
+    }
+
+    //Go to Fourth Level
+    public void GoToLevel4()
+    {
+        Debug.Log("Going to Level Four");
+        //SceneManager.LoadScene("HUB");
+    }
+
+    //Go to Fifth Level
+    public void GoToLevel5()
+    {
+        Debug.Log("Going to Level Five");
+        //SceneManager.LoadScene("HUB");
+    }
+
+    //Go to Sixth Level
+    public void GoToLevel6()
+    {
+        Debug.Log("Going to Level Six");
+        //SceneManager.LoadScene("HUB");
+    }
+
+    public void MainMenu()
+    {
+        Debug.Log("Going to Main Menu");
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Options()
+    {
+        Debug.Log("Settings Mode");
+        SceneManager.LoadScene("Options", LoadSceneMode.Additive);
+        
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Options"));
+
+    }
+
+    public void Credits()
+    {
+        Debug.Log("Roll the Credits");
+        SceneManager.LoadScene("Credits");
     }
 
 }

@@ -12,4 +12,20 @@ public class MainMenu : MonoBehaviour
         sceneClass.GoToLevelT();
     }
 
+    public void QuitGame()
+    {
+        Debug.Log("The game is quitting.");
+        Application.Quit();
+    }
+
+    public void GameOptions()
+    {
+        sceneClass.Options();
+    }
+
+    public void GameCredits()
+    {
+        sceneClass.Credits();
+    }
+
 }
