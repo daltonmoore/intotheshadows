@@ -220,7 +220,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Options
 --- !u!1 &1869470062
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,6 +674,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BG
       objectReference: {fileID: 0}
+    - target: {fileID: 1905557429349505732, guid: fe47f3ea8c84ed341b4a04265f95748d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1905557429349505735, guid: fe47f3ea8c84ed341b4a04265f95748d,
         type: 3}
       propertyPath: m_Pivot.x
@@ -732,7 +737,7 @@ PrefabInstance:
     - target: {fileID: 1905557429349505735, guid: fe47f3ea8c84ed341b4a04265f95748d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 1905557429349505735, guid: fe47f3ea8c84ed341b4a04265f95748d,
         type: 3}
