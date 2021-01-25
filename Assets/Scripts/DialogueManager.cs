@@ -34,11 +34,19 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp("e"))
+        if (Input.GetKeyUp("e") && talk == true)
         {
             Debug.Log("called from update");
             
             DisplayNextSentence();
+        }
+        if (talk == true)
+        {
+            //Time.timeScale = 0f;
+        }
+        else if (talk == false)
+        {
+            //Time.timeScale = 1f;
         }
     }
 
