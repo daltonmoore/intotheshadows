@@ -34,19 +34,15 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp("e") && talk == true)
+        
+        if (Time.timeScale == 1f) //Stops player from continueing dialogue while game is paused
         {
-            Debug.Log("called from update");
-            
-            DisplayNextSentence();
-        }
-        if (talk == true)
-        {
-            //Time.timeScale = 0f;
-        }
-        else if (talk == false)
-        {
-            //Time.timeScale = 1f;
+            if (Input.GetKeyUp("e") && talk == true)
+            {
+                Debug.Log("called from update");
+
+                DisplayNextSentence();
+            }
         }
     }
 
@@ -65,6 +61,7 @@ public class DialogueManager : MonoBehaviour
 
         sentences.Clear();
 
+        //Dialogue interactions for each character
         #region Get Sentences
         if (dialogue.name == "Shadow Child")
         {
@@ -311,6 +308,7 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
+    //dialogue appears letter by letter
     IEnumerator TypeSentence (string sentence)
     {
         dialogueText.text = "";
@@ -337,7 +335,7 @@ public class DialogueManager : MonoBehaviour
 
     void SetInteractable()
     {
-        if (dialogue.interactions > 3 && dialogue.name == "Light Worshiper")
+        if (dialogue.interactions > 3 && dialogue.name == "Light Worshiper") //stops player from interacting with character after 3rd interaction
         {
             dialogue.interactable = false;
         }

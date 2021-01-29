@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
 {
 
 	player _player;
+	public DialogueManager dialogueManager;
 
 	void Start()
 	{

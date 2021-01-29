@@ -7,6 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Controller2D))]
 public class player : MonoBehaviour
 {
+    [Header("Health & Respawn")]
     public Transform respawnPoint;
     public bool inHealingLight, inDamageLight;
     [SerializeField]
@@ -15,16 +16,24 @@ public class player : MonoBehaviour
     float lightDmgCoolDown = .01f;
     float lightHealCoolDown = .02f;
     Coroutine lightDmgCoolDownCoroutine, lightHealCoolDownCoroutine;
+    [Space(20)]
+
     Animator animator;
     SpriteRenderer spriteRenderer;
 
+    [Header("Jump")]
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
+    [Space(20)]
     float timeToJumpApex = 0.4f;
     float accelerationTimeAirbourne = 0.2f;
     float accelerationTimeGrounded = 0.1f;
     float moveSpeed = 6;
+    
 
+    [Header("Dialogue")]
+    public GameObject dialogueManager;
+    [Space(20)]
 
     public Vector2 wallJumpClimb;
     public Vector2 wallJumpOff;
@@ -83,6 +92,9 @@ public class player : MonoBehaviour
         move = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0.0f);
         animator.SetFloat("horizontal", move.x);
 
+        //is talk working
+        //Debug.Log(dialogueManager.GetComponent<DialogueManager>().talk);
+
         if (move != Vector3.zero)
         {
             xMove = move.x;
@@ -91,12 +103,19 @@ public class player : MonoBehaviour
 
         CalculateVelocity();
         HandleWallSliding();
+
         //if (Input.GetButton(("Fire1")))
         //{
         //    chargeTimer += Time.deltaTime;
         //}
 
-        controller.Move(velocity * Time.deltaTime, directionalInput);
+        //Player stops moving when in dialogue (also doesn't fall)
+        if (!dialogueManager.GetComponent<DialogueManager>().talk)
+        {
+            controller.Move(velocity * Time.deltaTime, directionalInput);
+
+        }
+
 
         if (controller.collisions.above || controller.collisions.below)
         {
@@ -321,7 +340,7 @@ public class player : MonoBehaviour
             //pushableObj.GetComponent<FixedJoint2D>().enabled = true;
             pushableObj.GetComponent<PullPush>().beingPushed = true;
         }
-        else if (hit.collider != null && hit.collider.gameObject.tag == "Dialogue")
+        else if (hit.collider != null && hit.collider.gameObject.tag == "NPC")
         {
             hit.collider.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
         }

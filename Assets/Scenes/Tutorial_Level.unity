@@ -79943,6 +79943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50fabd597929bc42b3e35c238961c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 0}
 --- !u!114 &611890393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79961,6 +79962,7 @@ MonoBehaviour:
   totalHealth: 0
   maxJumpHeight: 4
   minJumpHeight: 1
+  dialogueManager: {fileID: 0}
   wallJumpClimb: {x: 8, y: 16}
   wallJumpOff: {x: 8.5, y: 16}
   wallLeap: {x: 18, y: 17}
@@ -80724,7 +80726,7 @@ PrefabInstance:
     - target: {fileID: 8506795559633032694, guid: 65db44bd2b429624d9d51a1f16f0ba6d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.525277
+      value: -4.47
       objectReference: {fileID: 0}
     - target: {fileID: 8506795559633032694, guid: 65db44bd2b429624d9d51a1f16f0ba6d,
         type: 3}
@@ -81261,9 +81263,21 @@ PrefabInstance:
       value: PlayerFinal
       objectReference: {fileID: 0}
     - target: {fileID: 1047562970042887, guid: 08b34aee21c082e4f89a2c5dadbc2206, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 1443590721}
+    - target: {fileID: 1047562970042887, guid: 08b34aee21c082e4f89a2c5dadbc2206, type: 3}
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 1957900864}
+    - target: {fileID: 1047562970042887, guid: 08b34aee21c082e4f89a2c5dadbc2206, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 1443590721}
+    - target: {fileID: 1047562970042904, guid: 08b34aee21c082e4f89a2c5dadbc2206, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 1443590722}
     - target: {fileID: 1047563616310890, guid: 08b34aee21c082e4f89a2c5dadbc2206, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -82022,6 +82036,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65db44bd2b429624d9d51a1f16f0ba6d, type: 3}
+--- !u!1 &1443590721 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8008979951138083095, guid: 73320d0bd2c7f284aaaa1324adce7c62,
+    type: 3}
+  m_PrefabInstance: {fileID: 407572960}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1443590722 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8008979951138083080, guid: 73320d0bd2c7f284aaaa1324adce7c62,
+    type: 3}
+  m_PrefabInstance: {fileID: 407572960}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443590721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c2016f9ed66f94298661e32d425c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1512524669
 GameObject:
   m_ObjectHideFlags: 0
