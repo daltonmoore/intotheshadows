@@ -18,39 +18,47 @@ public class PlayerInput : MonoBehaviour
 	{
 		Vector2 directionalInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-		_player.SetDirectionalInput(directionalInput);
-
-		if (Input.GetButtonDown(("Jump")))
+		if (!dialogueManager.GetComponent<DialogueManager>().talk)
 		{
-			_player.OnJumpInputDown();
-		}
+			_player.SetDirectionalInput(directionalInput);
 
-		if (Input.GetButtonUp("Jump"))
-		{
-			_player.OnJumpInputUp();
-		}
-
-		if (Input.GetButtonDown(("Dash")))
-		{
-			_player.Dash();
-		}
-
-		if (Input.GetKeyDown(KeyCode.E))
-		{
-			if(_player.pushableObj != null)
-            {
-				_player.EndInteract();				
-			}
-            else
-            {
-				_player.Interact();
+			if (Input.GetButtonDown(("Jump")))
+			{
+				_player.OnJumpInputDown();
 			}
 
-		}
+			if (Input.GetButtonUp("Jump"))
+			{
+				_player.OnJumpInputUp();
+			}
 
-		/*if (Input.GetButtonUp(("Fire1")))
-		{
-			player.Shoot();
-		}*/
+			if (Input.GetButtonDown(("Dash")))
+			{
+				_player.Dash();
+			}
+
+			if (Input.GetKeyDown(KeyCode.E))
+			{
+				if (_player.pushableObj != null)
+				{
+					_player.EndInteract();
+				}
+				else
+				{
+					Debug.Log("Try interact");
+					_player.Interact();
+				}
+
+			}
+
+			/*if (Input.GetButtonUp(("Fire1")))
+			{
+				player.Shoot();
+			}*/
+		}
+		else
+        {
+			_player.SetDirectionalInput(new Vector2(0, 0));
+		}
 	}
 }

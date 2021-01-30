@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 8921455}
   - component: {fileID: 8921456}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SoundSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -591,7 +591,7 @@ GameObject:
   - component: {fileID: 424154787}
   - component: {fileID: 424154788}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: MusicSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1051,6 +1051,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 0}
+  masterSlider: {fileID: 0}
+  musicSlider: {fileID: 0}
+  soundSlider: {fileID: 0}
 --- !u!114 &583478641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1775,7 +1778,7 @@ GameObject:
   - component: {fileID: 1221379625}
   - component: {fileID: 1221379626}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: MasterSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2107,6 +2110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 8e9eb5e98380dbc49884a44d7ae6df79, type: 2}
+  masterSlider: {fileID: 1221379625}
+  musicSlider: {fileID: 424154787}
+  soundSlider: {fileID: 8921455}
 --- !u!114 &1363257865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2508,6 +2514,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 0}
+  masterSlider: {fileID: 0}
+  musicSlider: {fileID: 0}
+  soundSlider: {fileID: 0}
 --- !u!114 &1535967010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2842,6 +2851,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 0}
+  masterSlider: {fileID: 0}
+  musicSlider: {fileID: 0}
+  soundSlider: {fileID: 0}
 --- !u!114 &1948208073
 MonoBehaviour:
   m_ObjectHideFlags: 0

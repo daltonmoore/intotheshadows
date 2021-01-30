@@ -110,11 +110,11 @@ public class player : MonoBehaviour
         //}
 
         //Player stops moving when in dialogue (also doesn't fall)
-        if (!dialogueManager.GetComponent<DialogueManager>().talk)
-        {
-            controller.Move(velocity * Time.deltaTime, directionalInput);
+        //if (!dialogueManager.GetComponent<DialogueManager>().talk)
+        //{
+        controller.Move(velocity * Time.deltaTime, directionalInput);
 
-        }
+        //}
 
 
         if (controller.collisions.above || controller.collisions.below)
@@ -340,8 +340,9 @@ public class player : MonoBehaviour
             //pushableObj.GetComponent<FixedJoint2D>().enabled = true;
             pushableObj.GetComponent<PullPush>().beingPushed = true;
         }
-        else if (hit.collider != null && hit.collider.gameObject.tag == "NPC")
+        else if (hit.collider != null && hit.collider.gameObject.CompareTag("NPC"))
         {
+            Debug.Log("NPC");
             hit.collider.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
         }
 

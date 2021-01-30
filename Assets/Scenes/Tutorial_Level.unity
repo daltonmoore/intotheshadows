@@ -80608,6 +80608,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2083019292}
     m_Modifications:
+    - target: {fileID: 2754424009174962352, guid: 9a7cd65156f7deb40a0b4c5fd7c23e1f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754424009174962352, guid: 9a7cd65156f7deb40a0b4c5fd7c23e1f,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 8.49728
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754424009174962352, guid: 9a7cd65156f7deb40a0b4c5fd7c23e1f,
+        type: 3}
+      propertyPath: MinDistance
+      value: 3.5103188
+      objectReference: {fileID: 0}
     - target: {fileID: 6275462680444301752, guid: 9a7cd65156f7deb40a0b4c5fd7c23e1f,
         type: 3}
       propertyPath: m_RootOrder
@@ -81116,9 +81131,13 @@ GameObject:
   - component: {fileID: 1128266228}
   - component: {fileID: 1128266227}
   - component: {fileID: 1128266226}
+  - component: {fileID: 1128266230}
+  - component: {fileID: 1128266229}
+  - component: {fileID: 1128266232}
+  - component: {fileID: 1128266231}
   m_Layer: 0
-  m_Name: shadowchild_idle_0
-  m_TagString: Untagged
+  m_Name: ShadowChild
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81201,12 +81220,164 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128266225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 87.52331, y: -3.73, z: 0}
+  m_LocalPosition: {x: 5.274, y: -3.772, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1128266229
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128266225}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -2525984662056817300, guid: 8e9eb5e98380dbc49884a44d7ae6df79,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: b8c02f47245040a4d84a893375efdf15, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1128266230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128266225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85729cc6eea57a5418ff140948ba4ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Shadow Child
+    interactions: 0
+    sentences: []
+    interactable: 1
+  audioSource: {fileID: 1128266229}
+--- !u!50 &1128266231
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128266225}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 1
+  m_Mass: 0.16919833
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!70 &1128266232
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128266225}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.03170252}
+  m_Size: {x: 0.31256104, y: 0.6084051}
+  m_Direction: 0
 --- !u!1001 &1203384681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81267,6 +81438,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1443590721}
     - target: {fileID: 1047562970042887, guid: 08b34aee21c082e4f89a2c5dadbc2206, type: 3}
+      propertyPath: distance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047562970042887, guid: 08b34aee21c082e4f89a2c5dadbc2206, type: 3}
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 1957900864}
@@ -81278,6 +81453,10 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 1443590722}
+    - target: {fileID: 1047562970042905, guid: 08b34aee21c082e4f89a2c5dadbc2206, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1047563616310890, guid: 08b34aee21c082e4f89a2c5dadbc2206, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
