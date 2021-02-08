@@ -71,6 +71,7 @@ public class player : MonoBehaviour
     public LayerMask boxMask;
 
     public GameObject pushableObj;
+    private RaycastHit2D hit;
 
     void Start()
     {
@@ -85,6 +86,8 @@ public class player : MonoBehaviour
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
         //print("Gravity: " + gravity + "  Jump Velocity: " + maxJumpVelocity);
+
+        hit = Physics2D.Raycast(transform.position, Vector2.right * xMove, distance, boxMask);
     }
 
     void Update()
@@ -330,9 +333,9 @@ public class player : MonoBehaviour
     public void Interact()
     {
         Physics2D.queriesStartInColliders = false;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * xMove, distance, boxMask);
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * xMove, distance, boxMask);
 
-        if (hit.collider != null && hit.collider.gameObject.tag == "pushable")
+        if (hit.collider != null && hit.collider.gameObject.CompareTag("pushable"))
         {
             pushableObj = hit.collider.gameObject;
             pushableObj.transform.parent = gameObject.transform;

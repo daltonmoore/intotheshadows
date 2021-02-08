@@ -15,8 +15,10 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
 
     public bool talk;
+    public bool firstInteraction;
+    bool canAdvanceDialogue = true;
 
-    
+    //NPC nPC;
 
     private Queue<string> sentences;
     
@@ -27,23 +29,16 @@ public class DialogueManager : MonoBehaviour
 
         //audioSource = GetComponent<AudioSource>();
 
-        talk = false;
+        //talk = false;
 
-        
+        //nPC = GameObject.FindGameObjectsWithTag("NPC").GetComponent<NPC>();
+
     }
 
     void Update()
     {
-        
-        if (Time.timeScale == 1f) //Stops player from continueing dialogue while game is paused
-        {
-            if (Input.GetKeyUp("e") && talk == true)
-            {
-                Debug.Log("called from update");
+        ContinueDialogue();
 
-                DisplayNextSentence();
-            }
-        }
     }
 
 
@@ -52,6 +47,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Starting conversation with " + dialogue.name);
 
         talk = true;
+        firstInteraction = true;
 
         this.dialogue = dialogue;
 
@@ -193,7 +189,7 @@ public class DialogueManager : MonoBehaviour
                     break;
             }
         }
-        else if (dialogue.name == "Light Worshiper")
+        else if (dialogue.name == "Light Worshiper Jonas")
         {
             switch (dialogue.interactions)
             {
@@ -293,6 +289,35 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    void ContinueDialogue()
+    {
+        if (Time.timeScale == 1f) //Stops player from continueing dialogue while game is paused
+        {
+            if (Input.GetKeyUp(KeyCode.E) && talk == true && firstInteraction == false && canAdvanceDialogue == true)
+            {
+                Debug.Log("called from update");
+
+                StartCoroutine(DialogueCooldown());
+
+                DisplayNextSentence();
+            }
+            if (firstInteraction == true)
+            {
+                firstInteraction = false;
+            }
+
+        }
+    }
+
+    IEnumerator DialogueCooldown()
+    {
+        canAdvanceDialogue = false;
+        print("We set the boys to false");
+        yield return new WaitForSeconds(0.5f);
+        canAdvanceDialogue = true;
+        print("We set the boys to true");
+    }
+
     public void DisplayNextSentence()
     {
 
@@ -335,7 +360,7 @@ public class DialogueManager : MonoBehaviour
 
     void SetInteractable()
     {
-        if (dialogue.interactions > 3 && dialogue.name == "Light Worshiper") //stops player from interacting with character after 3rd interaction
+        if (dialogue.interactions > 3 && dialogue.name == "Light Worshiper Jonas") //stops player from interacting with character after 3rd interaction
         {
             dialogue.interactable = false;
         }

@@ -18,6 +18,7 @@ public class PlayerInput : MonoBehaviour
 	{
 		Vector2 directionalInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
+		// Player doesn't move when dialogue is on screen
 		if (!dialogueManager.GetComponent<DialogueManager>().talk)
 		{
 			_player.SetDirectionalInput(directionalInput);
@@ -43,11 +44,11 @@ public class PlayerInput : MonoBehaviour
 				{
 					_player.EndInteract();
 				}
-				else
+				/*else
 				{
 					Debug.Log("Try interact");
 					_player.Interact();
-				}
+				}*/
 
 			}
 

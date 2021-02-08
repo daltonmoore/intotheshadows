@@ -41785,6 +41785,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2083019292}
     m_Modifications:
+    - target: {fileID: 2754424009174962352, guid: 9a7cd65156f7deb40a0b4c5fd7c23e1f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6275462680444301752, guid: 9a7cd65156f7deb40a0b4c5fd7c23e1f,
         type: 3}
       propertyPath: m_RootOrder
@@ -80610,18 +80615,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2754424009174962352, guid: 9a7cd65156f7deb40a0b4c5fd7c23e1f,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754424009174962352, guid: 9a7cd65156f7deb40a0b4c5fd7c23e1f,
-        type: 3}
-      propertyPath: MaxDistance
-      value: 8.49728
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754424009174962352, guid: 9a7cd65156f7deb40a0b4c5fd7c23e1f,
-        type: 3}
       propertyPath: MinDistance
-      value: 3.5103188
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6275462680444301752, guid: 9a7cd65156f7deb40a0b4c5fd7c23e1f,
         type: 3}
@@ -80717,6 +80712,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MotherOfShadows
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506795559633032682, guid: 65db44bd2b429624d9d51a1f16f0ba6d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8506795559633032694, guid: 65db44bd2b429624d9d51a1f16f0ba6d,
         type: 3}
@@ -81220,7 +81220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128266225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.274, y: -3.772, z: 0}
+  m_LocalPosition: {x: 87.53, y: -3.772, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -81341,29 +81341,21 @@ MonoBehaviour:
     sentences: []
     interactable: 1
   audioSource: {fileID: 1128266229}
---- !u!50 &1128266231
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &1128266231
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128266225}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.16919833
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
---- !u!70 &1128266232
-CapsuleCollider2D:
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3761cff2ee6c6d24bb74c3cb0344e46a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canInteract: 0
+--- !u!58 &1128266232
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -81372,12 +81364,12 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.03170252}
-  m_Size: {x: 0.31256104, y: 0.6084051}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
 --- !u!1001 &1203384681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83754,6 +83746,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7285537382296166784, guid: fc9a3ef4026dd724883c9f54d83b85be,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285537382296166784, guid: fc9a3ef4026dd724883c9f54d83b85be,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7285537382296166785, guid: fc9a3ef4026dd724883c9f54d83b85be,
         type: 3}
       propertyPath: m_RootOrder
